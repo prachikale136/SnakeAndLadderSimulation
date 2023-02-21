@@ -11,10 +11,13 @@ namespace SnakeLadderSimulation
     {
         public int StartPoint = 0;
         public int RandDice = 0;
-        public int Choice = 0;
-        public string play;
         public int count;
         public int RandomNumber;
+        public string play;
+
+        public int No_play = 0;
+        public int Ladder = 1;
+        public int Snake = 2;
         public void StartPlaying()
         {
             Console.WriteLine("Game started");
@@ -45,11 +48,12 @@ namespace SnakeLadderSimulation
                         break;
                     case "Ladder":                         //if choice =1
                         StartPoint += RandDice;  //startPoint = startPoint +randDice
-                        if (StartPoint > 100)
+                        count++; 
+                        if (StartPoint > 100)  //checking starting point is >100
                         {
-                            StartPoint -= StartPoint; //
+                            StartPoint -= RandDice; //startPoit = startPoint - RandDice
                         }
-                        Console.WriteLine("Exact Position: " + StartPoint);
+                        Console.WriteLine("Position of player: " + StartPoint);
                         break;
                     case "Snake":
                         StartPoint -= RandDice;        //if choice=2
@@ -58,11 +62,14 @@ namespace SnakeLadderSimulation
                             StartPoint = 0;
                         }
                         Console.WriteLine("snake Attack: " + StartPoint); //startPoint -RandDice
+                        Console.WriteLine("StartPoint");  //if snake attack point will be 0 (initial position 0)
                         break;
                     default:
                         Console.WriteLine("Invalid Option");
                         break;
                 }
+                Console.WriteLine("Dice role to win thw game :" +count);
+
             }
         }
     }
