@@ -12,7 +12,9 @@ namespace SnakeLadderSimulation
         public int StartPoint = 0;
         public int RandDice = 0;
         public int Choice = 0;
-        int Option = 0;
+        public string play;
+        public int count;
+        public int RandomNumber;
         public void StartPlaying()
         {
             Console.WriteLine("Game started");
@@ -21,16 +23,27 @@ namespace SnakeLadderSimulation
                 Random random = new Random();
                 RandDice = random.Next(1, 7);  //Random value betw 1 to 6
                 Console.WriteLine("Dice Number is : " + RandDice);
-                Choice = random.Next(0, 3); //value to check its snake or ladder
-                Console.WriteLine("Dice value :" + Choice);
+                RandomNumber = random.Next(0, 3); //value to check its snake or ladder
+                //Console.WriteLine("Dice value :" + Choice);
                 //Console.WriteLine("you are at " +StartPoint);
-
-                switch (Choice)
+                if (RandomNumber == 0)
                 {
-                    case 0:  //for no play if choice =0
-                        Console.WriteLine("No Play");
+                    play = "No_play";
+                }
+                else if (RandomNumber == 1)
+                {
+                    play = "Ladder";
+                }
+                else
+                {
+                    play = "Snake";
+                }
+                switch (play)
+                {
+                    case "No_play":  //for no play if choice =0
+                        Console.WriteLine("No moves");
                         break;
-                    case 1:                         //if choice =1
+                    case "Ladder":                         //if choice =1
                         StartPoint += RandDice;  //startPoint = startPoint +randDice
                         if (StartPoint > 100)
                         {
@@ -38,7 +51,7 @@ namespace SnakeLadderSimulation
                         }
                         Console.WriteLine("Exact Position: " + StartPoint);
                         break;
-                    case 2:
+                    case "Snake":
                         StartPoint -= RandDice;        //if choice=2
                         if (StartPoint < 0)  //if 0<0 then it will start again
                         {
