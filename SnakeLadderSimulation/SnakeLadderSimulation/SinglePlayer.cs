@@ -12,10 +12,11 @@ namespace SnakeLadderSimulation
         public int StartPoint = 0;
         public int RandDice = 0;
         public int Choice = 0;
+        int Option = 0;
         public void StartPlaying()
         {
             Console.WriteLine("Game started");
-            while (StartPoint != 0)
+            while ( StartPoint != 100)
             {
                 Random random = new Random();
                 RandDice = random.Next(1, 7);  //Random value betw 1 to 6
@@ -41,7 +42,7 @@ namespace SnakeLadderSimulation
                         Console.WriteLine("Invalid Option");
                         break;
                 }
-                if (StartPoint < 0) //if 0<0 then it will start again
+                if ( StartPoint < 0) //if 0<0 then it will start again
                 {
                     StartPoint= 0;
                 }
